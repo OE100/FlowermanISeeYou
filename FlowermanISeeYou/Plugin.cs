@@ -21,8 +21,6 @@ namespace FlowermanISeeYou
 
         internal static BepInEx.Logging.ManualLogSource log;
 
-        internal static string persistentDataPath = Paths.PluginPath + "\\OE.Tweaks\\Assets";
-
         private void Awake()
         {
             log = this.Logger;

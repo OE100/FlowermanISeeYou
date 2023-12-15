@@ -22,7 +22,7 @@ namespace FlowermanISeeYou.Patches
             Plugin.log.LogInfo("Patching flowerman sounds...");
             if (flowermanISeeYouSound == null)
             {
-                AssetBundle ab = AssetBundle.LoadFromFile(Paths.PluginPath + "\\OE.Tweaks\\Sounds\\flowermansounds");
+                AssetBundle ab = AssetBundle.LoadFromFile(Paths.PluginPath + "\\OE_Tweaks\\Sounds\\flowermansounds");
                 if (ab == null)
                 {
                     Plugin.log.LogError("Failed to load flowermansounds asset bundle");
