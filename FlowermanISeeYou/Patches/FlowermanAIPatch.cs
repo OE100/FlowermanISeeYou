@@ -3,6 +3,7 @@ using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace FlowermanISeeYou.Patches
     {
         internal static AudioClip flowermanISeeYouSound = null;
         internal static Dictionary<FlowermanAI, int> timesTriggeredSound = new Dictionary<FlowermanAI, int>();
+        internal static float nextTimeToSwitchSlot = 0f;
 
         [HarmonyPatch("Start")]
         [HarmonyPostfix]
@@ -22,7 +24,7 @@ namespace FlowermanISeeYou.Patches
             Plugin.log.LogInfo("Patching flowerman sounds...");
             if (flowermanISeeYouSound == null)
             {
-                AssetBundle ab = AssetBundle.LoadFromFile(Paths.PluginPath + "\\OE_Tweaks\\Sounds\\flowermansounds");
+                AssetBundle ab = AssetBundle.LoadFromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(Assembly.GetExecutingAssembly().GetManifestResourceNames()[0]));
                 if (ab == null)
                 {
                     Plugin.log.LogError("Failed to load flowermansounds asset bundle");
